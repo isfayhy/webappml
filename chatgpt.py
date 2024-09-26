@@ -2,10 +2,10 @@ import streamlit as st
 from openai import OpenAI
 
 
-st.title("Intégration Dall-E 3")
+st.title("Intégration Chatpgt")
 OpenAIKEY = st.sidebar.text_input("Entrez votre clé API")
 st.write(OpenAIKEY)
-prompt = st.text_input("Entrez un texte pour générer une image")
+prompt = st.text_input("Entrez un texte")
 
 def prompt_dall_e():
     client = OpenAI(api_key=OpenAIKEY)
