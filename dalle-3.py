@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import OpenAI
 
 
 st.title('Intégration OpenAI ')
@@ -18,7 +18,8 @@ prompt = st.text_input("Entre ton texte :")
 
 
 if st.button("Générer"):
-    image = openai.Image.create(
+    image = client.images.generate(
+    model="dall-e-2",
     prompt=prompt,
     n=1,
     size="512x512"
