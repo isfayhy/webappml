@@ -1,18 +1,30 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 
-# Configuration de l'API
-openai.api_key = "Sk-6uxlenvrwsRO0NlIgqhrg2B-AvWNwVlPV8MgbU-QSHT3BlbkFJSc_Lmu6ZS06yDsSmP4kvVEd42Ds95-CXp726oavJMA"
 
-# Interface Streamlit
-st.title('Intégration OpenAI dans Streamlit')
+st.title('Intégration OpenAI ')
 
-user_input = st.text_input("Entre ton texte :")
 
-if st.button("Générer"):
-    response = openai.Completion.create(
-        engine="text-davinci-003", 
-        prompt=user_input, 
-        max_tokens=50
-    )
-    st.write(response.choices[0].text.strip())
+
+
+# Testez ici plusieurs variation du prompte
+
+APIKEY = st.text_input("Entre ta clé API :")
+
+client = OpenAI(api_key=APIKEY)
+
+prompt = st.text_input("Entre ton texte :") 
+
+
+if st.button("Générer"): (
+image = client.images.generate(
+    model="dall-e-2",
+    prompt=prompt,
+    size="512x512",
+    quality="standard",
+    n=1,
+)
+)
+
+image_url = image.data[0].url
+st.image(image_url)
