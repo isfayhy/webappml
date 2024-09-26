@@ -16,7 +16,7 @@ client = OpenAI(api_key=APIKEY)
 prompt = st.text_input("Entre ton texte :") 
 
 
-if st.button("Générer"): (
+if st.button("Générer"): 
 image = client.images.generate(
     model="dall-e-2",
     prompt=prompt,
@@ -26,6 +26,6 @@ image = client.images.generate(
 )
 image_url = image.data[0].url
 st.image(image_url)
-)
+
 
 
