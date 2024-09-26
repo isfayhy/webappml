@@ -14,7 +14,7 @@ prompt = st.text_input("Entre ton texte :")
 
 
 
-if st.button("Générer"):
+def generer()
     client = OpenAI(api_key=OpenAIKEY)
     
     image = client.images.generate(
@@ -28,3 +28,5 @@ if st.button("Générer"):
     image_url = image['data'][0]['url']
     st.image(image_url)
 
+if st.button("Générer"):
+    generer()
