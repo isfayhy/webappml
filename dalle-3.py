@@ -14,7 +14,7 @@ prompt = st.text_input("Entre ton texte :")
 
 
 
-def generer()
+def generer() :
     client = OpenAI(api_key=OpenAIKEY)
     
     image = client.images.generate(
