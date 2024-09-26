@@ -1,15 +1,18 @@
-from openai import OpenAI
+import streamlit as st
+import openai
 
-client = OpenAI(
-  organization='org-RCxc2yLbmvEAtq0XTG0iWsZ7',
-  project='proj_WuUNsGfeqXKYHp1fMMLY8bmX',
-)
+# Configuration de l'API
+openai.api_key = "Sk-6uxlenvrwsRO0NlIgqhrg2B-AvWNwVlPV8MgbU-QSHT3BlbkFJSc_Lmu6ZS06yDsSmP4kvVEd42Ds95-CXp726oavJMA"
 
-stream = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[{"role": "user", "content": "Say this is a test"}],
-    stream=True,
-)
-for chunk in stream:
-    if chunk.choices[0].delta.content is not None:
-        print(chunk.choices[0].delta.content, end="")
+# Interface Streamlit
+st.title('Intégration OpenAI dans Streamlit')
+
+user_input = st.text_input("Entre ton texte :")
+
+if st.button("Générer"):
+    response = openai.Completion.create(
+        engine="text-davinci-003", 
+        prompt=user_input, 
+        max_tokens=50
+    )
+    st.write(response.choices[0].text.strip())
