@@ -19,10 +19,10 @@ prompt = st.text_input("Entre ton texte :")
 
 if st.button("Générer"):
     image = openai.Image.create(
-        prompt=prompt,
-        n=1,
-        size="512x512"
-    )
+    prompt=prompt,
+    n=1,
+    size="512x512"
+    )  
     image_url = image['data'][0]['url']
     st.image(image_url)
 
