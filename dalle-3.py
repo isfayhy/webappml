@@ -16,8 +16,8 @@ prompt = st.text_input("Entre ton texte :")
 
 if st.button("Générer"):
     client = OpenAI(api_key=OpenAIKEY)
+
     image = client.images.generate(
-    model="dall-e-2",
     prompt=prompt,
     n=1,
     size="512x512"
