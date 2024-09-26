@@ -7,7 +7,7 @@ st.title('Intégration OpenAI ')
 
 
 
-APIKEY = st.text_input("Entre ta clé API :")
+OpenAIKEY = st.text_input("Entre ta clé API :")
 
 
 prompt = st.text_input("Entre ton texte :") 
@@ -15,7 +15,7 @@ prompt = st.text_input("Entre ton texte :")
 
 
 if st.button("Générer"):
-    client = OpenAI(api_key=APIKEY)
+    client = OpenAI(api_key=OpenAIKEY)
     image = client.images.generate(
     model="dall-e-2",
     prompt=prompt,
